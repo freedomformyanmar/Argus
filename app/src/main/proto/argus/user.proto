@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package argus;
+
+option java_package = "io.github.freedomformyanmar.argus.user";
+option java_multiple_files = true;
+
+message UserProto {
+  string number = 1;
+  string secret = 2;
+}

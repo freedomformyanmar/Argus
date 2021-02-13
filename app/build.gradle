@@ -1,0 +1,131 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.squareup.wire'
+    id 'com.squareup.sqldelight'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def BACK4APP_SERVER_URL = properties.getProperty('back4app_server_url')
+def BACK4APP_APP_ID = properties.getProperty('back4app_app_id')
+def BACK4APP_CLIENT_KEY = properties.getProperty('back4app_client_key')
+def RELEASE_KEY_ALIAS = properties.getProperty('release_key_alias')
+def RELEASE_KEY_PASSWORD = properties.getProperty('release_key_password')
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "io.github.freedomformyanmar.argus"
+        minSdkVersion 22
+        targetSdkVersion 30
+        versionCode 3
+        versionName "1.0.0"
+        setProperty("archivesBaseName", "argus-${versionName}")
+
+        resValue "string", "back4app_server_url", BACK4APP_SERVER_URL
+        resValue "string", "back4app_app_id", BACK4APP_APP_ID
+        resValue "string", "back4app_client_key", BACK4APP_CLIENT_KEY
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("argus_key.jks")
+            storePassword RELEASE_KEY_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+wire {
+    kotlin {
+    }
+}
+
+sqldelight {
+    ArgusDatabase {
+        packageName = "io.github.freedomformyanmar.argus.db"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
+
+    //noinspection DifferentStdlibGradleVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.30"
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    implementation("com.squareup.moshi:moshi:1.11.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.3.0'
+
+    implementation 'com.airbnb.android:lottie:3.6.0'
+
+    def lifecycle_version = "2.2.0"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    implementation 'androidx.activity:activity-ktx:1.2.0'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0'
+
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    implementation "androidx.datastore:datastore:1.0.0-alpha06"
+    implementation 'com.squareup.wire:wire-runtime:3.6.0'
+    implementation 'com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0'
+
+    implementation "com.github.parse-community.Parse-SDK-Android:parse:1.25.0"
+
+    implementation "com.squareup.sqldelight:android-driver:1.4.3"
+    implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.4.3"
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

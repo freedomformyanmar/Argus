@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Argus</string>
+    <string name="s_o_s">S.O.S</string>
+
+    <!--  General Usages-->
+    <string name="ok">ကောင်းပြီ</string>
+    <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+    <string name="cancel">မလုပ်တော့ပါ</string>
+
+    <!--  App Update-->
+    <string name="update_required">App အဆင့်မြင့်တင်ရန် လိုအပ်ပါသည်။</string>
+    <string name="update_required_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ ဆက်လက်အသုံးပြုရန် အဆင့်မြင့်တင်ပေးပါ။</string>
+    <string name="do_update">အဆင့်မြင့်တင်မယ်</string>
+
+    <string name="update_relaxed_title">App ဗာရှင်းအသစ်</string>
+    <string name="update_relaxed_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ သင် အဆင့်မြင့်တင်လိုပါသလား?</string>
+
+</resources>

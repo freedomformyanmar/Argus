@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package argus;
+
+option java_package = "io.github.freedomformyanmar.argus.appupdate";
+option java_multiple_files = true;
+
+message AppUpdateProto {
+  int64 latest_version_code = 1;
+  bool require_forced_update = 2;
+  string download_link = 3;
+}
