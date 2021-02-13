@@ -6,7 +6,7 @@ Argus ဆိုတာ Greek ဒဏ္ဍရီထဲက  Argus Panoptes ရဲ�
 
 App ကို Play Store ပေါ်လုံးဝလုံးဝ မတင်ထားပါ။ ဒေါင်းချင်ရင် ဒီကနေဒေါင်းပါ
 
-[Download Mirror #1](https://parsefiles.back4app.com/cjPxToF6eUou8lVPNQPBvJFh515Oyzqpvu0FagGm/d8f09ef3241a0e0fd55249ef4ca44c90_argus-1.0.0-release.apk)
+[Download Mirror #1](https://parsefiles.back4app.com/cjPxToF6eUou8lVPNQPBvJFh515Oyzqpvu0FagGm/aa93394a924d6a24de81d90ea4274bc8_argus-1.0.1-release.apk)
 
 လိုအပ်ချက်တွေက
 
