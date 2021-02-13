@@ -62,8 +62,13 @@ class ContactActivity : AppCompatActivity() {
                     }
                 }
 
-                val user = qrManager.decodeBitmap(bitmap)
-                database.contactTableQueries.insertOrReplace(user.number, user.secretCode)
+                try {
+                    val user = qrManager.decodeBitmap(bitmap)
+                    database.contactTableQueries.insertOrReplace(user.number, user.secretCode)
+                } catch (exception: Exception) {
+                    Toast.makeText(this@ContactActivity, "Invalid QR Code", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
 
