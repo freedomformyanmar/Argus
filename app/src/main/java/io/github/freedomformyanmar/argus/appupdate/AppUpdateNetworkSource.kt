@@ -12,7 +12,9 @@ class AppUpdateNetworkSource {
         val appUpdateObject = appUpdateQuery.first
 
         val versionCode = appUpdateObject.getNumber("versionCode")!!.toLong()
-        val apkUrl = appUpdateObject.getParseFile("appFile")!!.url
+        val apkUrl = appUpdateObject.getString("downloadLink")
+            ?: appUpdateObject.getParseFile("appFile")?.url
+            ?: throw IllegalStateException()
 
         return AppUpdate(
             latestVersionCode = versionCode,
