@@ -5,19 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.github.freedomformyanmar.argus.ContactTable
 import io.github.freedomformyanmar.argus.databinding.ItemContactBinding
 import io.github.freedomformyanmar.argus.user.User
 
 class ContactAdapter(
-    private val onDeleteClick: (User) -> Unit
-) : ListAdapter<User, ContactAdapter.ContactViewHolder>(
-    object : DiffUtil.ItemCallback<User>() {
+    private val onDeleteClick: (ContactTable) -> Unit
+) : ListAdapter<ContactTable, ContactAdapter.ContactViewHolder>(
+    object : DiffUtil.ItemCallback<ContactTable>() {
 
-        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-            return oldItem.number == newItem.number
+        override fun areItemsTheSame(oldItem: ContactTable, newItem: ContactTable): Boolean {
+            return oldItem.phoneNumber == newItem.phoneNumber
         }
 
-        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        override fun areContentsTheSame(oldItem: ContactTable, newItem: ContactTable): Boolean {
             return oldItem == newItem
         }
 
@@ -32,7 +33,8 @@ class ContactAdapter(
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val itemAtIndex = getItem(position)
         holder.itemContactBinding.apply {
-            tvNumber.text = itemAtIndex.number
+            tvNumber.text = itemAtIndex.phoneNumber
+            tvName.text = itemAtIndex.name
             buttonDelete.setOnClickListener {
                 onDeleteClick.invoke(itemAtIndex)
             }

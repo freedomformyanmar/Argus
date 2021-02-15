@@ -1,10 +1,11 @@
 CREATE TABLE ContactTable(
     phoneNumber TEXT PRIMARY KEY NOT NULL,
-    secretCode TEXT NOT NULL
+    secretCode TEXT NOT NULL,
+    name TEXT NOT NULL DEFAULT 'user'
 );
 
 insertOrReplace:
-INSERT OR REPLACE INTO ContactTable VALUES(:phoneNumber, :secretCode);
+INSERT OR REPLACE INTO ContactTable VALUES(:phoneNumber, :secretCode, :name);
 
 deleteByNumber:
 DELETE FROM ContactTable WHERE phoneNumber= :phoneNumber;

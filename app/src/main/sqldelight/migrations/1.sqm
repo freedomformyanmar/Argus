@@ -1,0 +1,2 @@
+ALTER TABLE ContactTable
+ADD name TEXT DEFAULT 'user';

@@ -43,7 +43,7 @@ class ContactActivity : AppCompatActivity() {
 
     private val contactAdapter by lazy {
         ContactAdapter(onDeleteClick = {
-            database.contactTableQueries.deleteByNumber(it.number)
+            database.contactTableQueries.deleteByNumber(it.phoneNumber)
         })
     }
 
@@ -64,7 +64,7 @@ class ContactActivity : AppCompatActivity() {
 
                 try {
                     val user = qrManager.decodeBitmap(bitmap)
-                    database.contactTableQueries.insertOrReplace(user.number, user.secretCode)
+                    database.contactTableQueries.insertOrReplace(user.number, user.secretCode, "User")
                 } catch (exception: Exception) {
                     Toast.makeText(this@ContactActivity, "Invalid QR Code", Toast.LENGTH_SHORT)
                         .show()
@@ -111,10 +111,7 @@ class ContactActivity : AppCompatActivity() {
         lifecycleScope.launch {
             database.contactTableQueries.getAll().asFlow().mapToList().collect { contactTableList ->
                 binding.tvEmptyInstruction.isVisible = contactTableList.isEmpty()
-                val userList = withContext(Dispatchers.Default) {
-                    contactTableList.map { User(it.phoneNumber, it.secretCode) }
-                }
-                contactAdapter.submitList(userList)
+                contactAdapter.submitList(contactTableList)
             }
         }
     }
@@ -136,7 +133,7 @@ class ContactActivity : AppCompatActivity() {
             if (result.contents != null) {
                 try {
                     val user = qrManager.decodeUser(result.contents)
-                    database.contactTableQueries.insertOrReplace(user.number, user.secretCode)
+                    database.contactTableQueries.insertOrReplace(user.number, user.secretCode,"User")
                 } catch (ioException: IOException) {
                     Toast.makeText(this, "Invalid QR", Toast.LENGTH_LONG).show()
                 }

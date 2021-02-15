@@ -75,6 +75,7 @@ wire {
 sqldelight {
     ArgusDatabase {
         packageName = "io.github.freedomformyanmar.argus.db"
+        dialect = "sqlite:3.24"
     }
 }
 
