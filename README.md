@@ -6,7 +6,7 @@ Argus ဆိုတာ Greek ဒဏ္ဍရီထဲက  Argus Panoptes ရဲ�
 
 App ကို Play Store ပေါ်လုံးဝလုံးဝ မတင်ထားပါ။ ဒေါင်းချင်ရင် ဒီကနေဒေါင်းပါ
 
-[Download Mirror #1](https://parsefiles.back4app.com/cjPxToF6eUou8lVPNQPBvJFh515Oyzqpvu0FagGm/aa93394a924d6a24de81d90ea4274bc8_argus-1.0.1-release.apk)
+[Download Mirror #1](https://github.com/freedomformyanmar/Argus/releases/)
 
 လိုအပ်ချက်တွေက
 
@@ -39,7 +39,6 @@ Android 10 နဲ့အထက်မှာ Activity တွေကို background
 
 ## ထပ်ထည့်ချင်တဲ့အရာများ
 
-- Nickname နဲ့တွဲသိမ်းဖို့
 - GPS ရရင် တွဲပို့ပေးဖို့
 - False alarm သတ်မှတ်ဖို့
 - Alert ကို ထပ် foward လို့ရအောင်လုပ်ဖို့
