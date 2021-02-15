@@ -12,3 +12,6 @@ DELETE FROM ContactTable WHERE phoneNumber= :phoneNumber;
 
 getAll:
 SELECT * FROM ContactTable;
+
+updateName:
+UPDATE ContactTable SET name = :name WHERE phoneNumber = :phoneNumber;

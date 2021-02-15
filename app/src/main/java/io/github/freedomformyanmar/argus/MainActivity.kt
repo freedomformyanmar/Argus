@@ -196,7 +196,10 @@ class MainActivity : AppCompatActivity() {
                     processNumber(inputNumber)
                 else showPhoneNumberInput()
             }
-            .show()
+            .show().also {
+                it.setCancelable(false)
+                it.setCanceledOnTouchOutside(false)
+            }
     }
 
     private fun processNumber(number: String) {
